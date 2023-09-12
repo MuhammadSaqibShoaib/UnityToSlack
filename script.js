@@ -23,6 +23,7 @@ function handleURLParameters() {
     })
     .then((response) => {return response.json()})
     .then((data) => {
+        console.log(data)
         sessionStorage.setItem('accessToken', data.authed_user.access_token)
         window.close();
     })
