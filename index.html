@@ -107,6 +107,8 @@
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
                 loadingBar.style.display = "none";
+                var token = localStorage.getItem('accessToken')
+                unityInstance.SendMessage('Canvas','ShowAuthBtn', token)
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
                 };
