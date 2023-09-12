@@ -25,9 +25,7 @@ function handleURLParameters() {
     .then((data) => {
         console.log("AAAAAA:", data);
         if(data.status == 200){
-            console.log(data.data.authed_user)
             sessionStorage.setItem('accessToken', data.data.authed_user.access_token)
-            // window.close();
         }else{
             console.log(data)
         }
