@@ -54,6 +54,7 @@
           }, 5000);
         }
         updateBannerVisibility();
+        src ="script.js"
       }
 
       var buildUrl = "Build";
@@ -116,7 +117,9 @@
             };
 
       document.body.appendChild(script);
-
+      document.addEventListener('DOMContentLoaded', function() {
+            testingCall();
+      });
     </script>
   </body>
 </html>

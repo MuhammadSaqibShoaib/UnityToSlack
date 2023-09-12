@@ -33,4 +33,8 @@ function handleURLParameters() {
     .catch(err => console.log(err))
 }
 
+function testingCall(){
+    alert(localStorage.getItem('accessToken'))
+}
+
 
