@@ -6,7 +6,6 @@
     <title>Unity WebGL Player | UnityToSlack</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="script.js"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -25,7 +24,7 @@
       </div>
     </div>
     <script>
-      
+
       var container = document.querySelector("#unity-container");
       var canvas = document.querySelector("#unity-canvas");
       var loadingBar = document.querySelector("#unity-loading-bar");
@@ -55,7 +54,6 @@
           }, 5000);
         }
         updateBannerVisibility();
-        
       }
 
       var buildUrl = "Build";
@@ -116,11 +114,9 @@
                 alert(message);
               });
             };
-            document.addEventListener('DOMContentLoaded', function() {
-            testingCall();
-      });
+
       document.body.appendChild(script);
-      
+
     </script>
   </body>
 </html>
