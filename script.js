@@ -34,5 +34,4 @@ function handleURLParameters() {
     .catch(err => console.log(err))
 }
 
-// Call the function when the script is loaded
-handleURLParameters();
+
