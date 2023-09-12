@@ -11,7 +11,7 @@ function handleURLParameters() {
 
     // Update the content of the <h1> element with the values
     h1Element.textContent = `code: ${'Got it' || 'Not provided'}`;
-
+    console.log(code)
     fetch("https://ruby-zealous-bandicoot.cyclic.app/", {
         method: "POST",
         body: JSON.stringify({
@@ -23,9 +23,13 @@ function handleURLParameters() {
     })
     .then((response) => {return response.json()})
     .then((data) => {
-        console.log(data)
-        sessionStorage.setItem('accessToken', data.authed_user.access_token)
-        window.close();
+        if(data.status == 200){
+            console.log(data)
+            sessionStorage.setItem('accessToken', data.authed_user.access_token)
+            window.close();
+        }else{
+            console.log(data)
+        }
     })
     .catch(err => console.log(err))
 }
