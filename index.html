@@ -6,7 +6,6 @@
     <title>Unity WebGL Player | Workspace</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
-    <script src="script.js"></script>
   </head>
   <body>
     <div id="unity-container" class="unity-desktop">
@@ -102,16 +101,11 @@
       loadingBar.style.display = "block";
 
       var script = document.createElement("script");
-      var myGameInstance = null;
       script.src = loaderUrl;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
-                console.log(unityInstance)
-                myGameInstance = unityInstance;
-                console.log(myGameInstance)
-                SetUnityInstance(unityInstance);
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
