@@ -1,5 +1,5 @@
 // script.js
-
+var myInstance = null;
 function handleURLParameters() {
     // Get the URL search parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -11,7 +11,8 @@ function handleURLParameters() {
 
     // Update the content of the <h1> element with the values
     h1Element.textContent = `code: ${'Got it' || 'Not provided'}`;
-    console.log(code)
+    //console.log(code)
+    // sending temp to node js server
     fetch("https://ruby-zealous-bandicoot.cyclic.app/", {
         method: "POST",
         body: JSON.stringify({
@@ -25,7 +26,9 @@ function handleURLParameters() {
     .then((data) => {
         console.log("AAAAAA:", data);
         if(data.status == 200){
+            // saving code in localstorage
             localStorage.setItem('accessToken', data.data.authed_user.access_token)
+            CheckAuth();
         }else{
             console.log(data)
         }
@@ -33,8 +36,19 @@ function handleURLParameters() {
     .catch(err => console.log(err))
 }
 
-function testingCall(){
-    alert(localStorage.getItem('accessToken'))
+function SetUnityInstance(instance){
+    myInstance = instance;
 }
+
+
+function CheckAuth(){
+    if(myInstance!=null){
+    myInstance.SendMessage('JSManager','Referesh');
+    }
+    else{
+        console.log("Found no instance")
+    }
+}
+
 
 

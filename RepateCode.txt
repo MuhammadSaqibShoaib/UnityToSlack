@@ -1,0 +1,4 @@
+var myGameInstance = null;
+
+myGameInstance = unityInstance;
+                SetUnityInstance(unityInstance);

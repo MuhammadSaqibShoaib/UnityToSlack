@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Unity WebGL Player | UnityToSlack</title>
+    <title>Unity WebGL Player | Workspace</title>
     <link rel="shortcut icon" href="TemplateData/favicon.ico">
     <link rel="stylesheet" href="TemplateData/style.css">
   </head>
@@ -20,7 +20,7 @@
       <div id="unity-footer">
         <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
-        <div id="unity-build-title">UnityToSlack</div>
+        <div id="unity-build-title">Workspace</div>
       </div>
     </div>
     <script>
@@ -57,15 +57,15 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/UnityToSlack.loader.js";
+      var loaderUrl = buildUrl + "/Build.loader.js";
       var config = {
-        dataUrl: buildUrl + "/UnityToSlack.data",
-        frameworkUrl: buildUrl + "/UnityToSlack.framework.js",
-        codeUrl: buildUrl + "/UnityToSlack.wasm",
+        dataUrl: buildUrl + "/Build.data.gz",
+        frameworkUrl: buildUrl + "/Build.framework.js.gz",
+        codeUrl: buildUrl + "/Build.wasm.gz",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
-        productName: "UnityToSlack",
-        productVersion: "1.0",
+        productName: "Workspace",
+        productVersion: "0.1",
         showBanner: unityShowBanner,
       };
 
@@ -102,10 +102,13 @@
 
       var script = document.createElement("script");
       script.src = loaderUrl;
+      var myGameInstance = null;
       script.onload = () => {
         createUnityInstance(canvas, config, (progress) => {
           progressBarFull.style.width = 100 * progress + "%";
               }).then((unityInstance) => {
+                myGameInstance = unityInstance;
+                SetUnityInstance(unityInstance);
                 loadingBar.style.display = "none";
                 fullscreenButton.onclick = () => {
                   unityInstance.SetFullscreen(1);
