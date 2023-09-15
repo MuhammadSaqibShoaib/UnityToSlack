@@ -38,6 +38,7 @@ function handleURLParameters() {
 
 function SetUnityInstance(instance){
     myInstance = instance;
+    console.log(myInstance)
 }
 
 
