@@ -1,5 +1,4 @@
-// script.js
-var myInstance = null;
+
 function handleURLParameters() {
     // Get the URL search parameters
     const urlParams = new URLSearchParams(window.location.search);
@@ -28,7 +27,8 @@ function handleURLParameters() {
         if(data.status == 200){
             // saving code in localstorage
             localStorage.setItem('accessToken', data.data.authed_user.access_token)
-            CheckAuth();
+            localStorage.setItem('userID',data.data.authed_user.id)
+            window.close();
         }else{
             console.log(data)
         }
@@ -36,20 +36,6 @@ function handleURLParameters() {
     .catch(err => console.log(err))
 }
 
-function SetUnityInstance(instance){
-    myInstance = instance;
-    console.log(myInstance)
-}
-
-
-function CheckAuth(){
-    if(myInstance!=null){
-    myInstance.SendMessage('JSManager','Referesh');
-    }
-    else{
-        console.log("Found no instance")
-    }
-}
 
 
 
