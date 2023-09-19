@@ -26,8 +26,8 @@ function handleURLParameters() {
         console.log("AAAAAA:", data);
         if(data.status == 200){
             // saving code in localstorage
-            localStorage.setItem('accessToken', data.data.authed_user.access_token)
-            localStorage.setItem('userID',data.data.authed_user.id)
+            localStorage.setItem('accessToken', data.data.access_token)
+            localStorage.setItem('userID',data.data.id)
             window.close();
         }else{
             console.log(data)
