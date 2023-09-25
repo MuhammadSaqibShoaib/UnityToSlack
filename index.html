@@ -118,5 +118,44 @@
       document.body.appendChild(script);
 
     </script>
+
+    <script>
+      // Create a WebSocket object and specify the server URL
+const socket = new WebSocket('https://muhammadsaqibshoaib.github.io/UnityToSlack:7777'); // Replace with your server's WebSocket URL
+
+// Event handler for when the connection is opened
+socket.addEventListener('open', (event) => {
+  console.log('WebSocket connection opened:', event);
+
+  // You can send data to the server here if needed
+  // For example, socket.send('Hello, server!');
+});
+
+// Event handler for when a message is received from the server
+socket.addEventListener('message', (event) => {
+  const message = event.data;
+  console.log('Received message from server:', message);
+
+  // Process the received message here
+});
+
+// Event handler for when an error occurs
+socket.addEventListener('error', (event) => {
+  console.error('WebSocket error:', event);
+});
+
+// Event handler for when the connection is closed
+socket.addEventListener('close', (event) => {
+  if (event.wasClean) {
+    console.log('WebSocket connection closed cleanly, code:', event.code, 'reason:', event.reason);
+  } else {
+    console.error('WebSocket connection abruptly closed');
+  }
+});
+
+// You can also close the WebSocket connection programmatically if needed
+// socket.close();
+
+    </script>
   </body>
 </html>
